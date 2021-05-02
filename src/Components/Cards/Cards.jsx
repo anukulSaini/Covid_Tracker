@@ -31,7 +31,6 @@ const Cards = ({data:{confirmed,recovered,deaths,lastUpdate}}) => {
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant ="body2">Number of recoveries from covid-19</Typography>
                     </CardContent>
-                    {lastUpdate}
                 </Grid>
                 <Grid item component={Card} xs={12}  md={3} className={cx(styles.card,styles.deaths)}>
                     <CardContent>
@@ -47,6 +46,7 @@ const Cards = ({data:{confirmed,recovered,deaths,lastUpdate}}) => {
         </div>
       );
 }
+
  
 export default Cards
 ;
