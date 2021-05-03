@@ -21,7 +21,7 @@ const Chart = ( {data: { confirmed, recovered, deaths }, country}) => {
     confirmed?(
         <Bar
         data={{
-         labels:['Infected','Deaths','Recovered'],
+         labels:['Infected','Recovered','Deaths'],
          datasets:[{
              label:'People',
              backgroundColor:[
@@ -29,7 +29,7 @@ const Chart = ( {data: { confirmed, recovered, deaths }, country}) => {
                  'rgba(0,255,0,0.5)',
                  'rgba(255,0,0,0.5)'
              ],
-             data:[confirmed,recovered,deaths]
+             data:[confirmed.value,recovered.value,deaths.value]
          }]
         }}
         options={{
@@ -39,7 +39,7 @@ const Chart = ( {data: { confirmed, recovered, deaths }, country}) => {
         />
     ):null
 )
-
+console.log({confirmed,deaths});
 
 
   const lineChart =(
@@ -69,8 +69,8 @@ const Chart = ( {data: { confirmed, recovered, deaths }, country}) => {
     return ( 
         <div className={styles.container}>
         
-//             {country?Barchart:lineChart}
-{Barchart}
+            {/* {country?Barchart:lineChart} */}
+           {Barchart}
         </div>
      );
 }
