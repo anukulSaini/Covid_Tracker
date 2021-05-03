@@ -5,7 +5,7 @@ import styles from './Charts.module.css';
 
 
 
-const Chart = () => {
+const Chart = ( {data: { confirmed, recovered, deaths }, country}) => {
 
     const [dailyData,setDailyData] = useState([]);
 
@@ -15,8 +15,32 @@ const Chart = () => {
         setDailyData (await fetchDailyData());
       }
       fetchAPI();
-  });
+  },[]);
  
+  const Barchart =(
+    confirmed?(
+        <Bar
+        data={{
+         labels:['Infected','Deaths','Recovered'],
+         datasets:[{
+             label:'People',
+             backgroundColor:[
+                 'rgba(0,0,255,0.5)',
+                 'rgba(0,255,0,0.5)',
+                 'rgba(255,0,0,0.5)'
+             ],
+             data:[confirmed,recovered,deaths]
+         }]
+        }}
+        options={{
+            legend:{display:false},
+            title:{display:true,text:`Current State in ${country}`}
+        }}
+        />
+    ):null
+)
+
+
 
   const lineChart =(
       dailyData.length
@@ -44,7 +68,8 @@ const Chart = () => {
 
     return ( 
         <div className={styles.container}>
-            {lineChart}
+        
+            {country?Barchart:lineChart}
         </div>
      );
 }
