@@ -22,21 +22,20 @@ async componentDidMount(){
 
 handleCountryChange = async(country)=>{
   const fetcheddata = await fetchdata(country);
-  this.setState({fetcheddata,country:country});
-  console.log(fetcheddata);
-  console.log(country);
+  this.setState({data:fetcheddata,contry:country});
+
 
 }
 
 
 render ()  {
-  const {data} = this.state;
+  const {data,country} = this.state;
   return (
     <div >
       <h1>
         <Cards data = {data}/>
         <CountryPicker handleCountryChange={this.handleCountryChange}/>
-        <Charts/>
+        <Charts data ={data} country={country}/>
       </h1>
     </div>
   );
@@ -44,7 +43,6 @@ render ()  {
 }
 
 export default App;
-//Component show data on cards
 
 
 
